@@ -132,145 +132,181 @@
         </div>
     </div>
 </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            LoadData("");
-            $("#btnAdd").click(function () {
+<script>
+    $(document).ready(function () {
+        LoadData("");
+
+        $("#btnAdd").click(function () {
+            if (validateAllInputs()) {
                 AddHocSinh();
-            });
-            $('#exampleModal').on('show.bs.modal', function (e) {
-                TangID();
-            });
-            $('#btnReset').click(function () {
-                resetForm();
-            });
-            $(document).on("click", ".btnEdit", function () {
-                var MaLop = $(this).closest("tr").find("td:eq(1)").text();
-                GetById(MaLop);
-            });
-            $("#btnSaveEdit").click(function () {
-                UpdateHS();
-            });
-
-            $(document).on("click", ".btnDelete", function () {
-                var id = $(this).closest("tr").find("td:eq(1)").text();
-                var name = $(this).closest("tr").find("td:eq(2)").text();
-                if (confirm("Bạn có chắc muốn xóa lớp '" + name + "'không?")) {
-                    DeleteHocSinh(id);
-                }
-            });
+            }
         });
-        function LoadData() {
-            $.ajax({
-                url: '/Lop/GetLop',
-                type: 'GET',
-                success: function (res) {
-                    var items = res.data;
-                    var html = "";
-                    if (items.length === 0) {
-                        html += "<tr><td colspan='9' class='text-center'>Không có dữ liệu</td></tr>";
-                    } else {
-                        for (let i = 0; i < items.length; i++) {
-                            var index = i + 1;
-                            html += "<tr>";
-                            html += "<td>" + index + "</td>"
-                            html += "<td>" + items[i].MaLop + "</td>";
-                            html += "<td>" + items[i].TenLop + "</td>";
-                            html += "<td><button class='btn btn-icon btn-hover btn-sm btn-rounded pull-right btnEdit' data-toggle='modal' data-target='#EditModal'> <i class='anticon anticon-edit'></i></button><button class='btn btn-icon btn-hover btn-sm btn-rounded pull-right btnDelete'> <i class='anticon anticon-delete'></i></button> </td> ";
-                            html += "</tr>";
-                        }
-                    }
-                    $('#showdata').html(html);
-                }
-            });
-        };
 
-        function TangID() {
-            $.ajax({
-                url: '/Lop/GetMaxLop',
-                type: 'GET',
-                success: function (data) {
-                    var maxId = data.maxId;
-                    // Tăng ID lên 1 và gán vào trường MaHS
-                    var newId = "L" + (maxId + 1);
-                    $('#MaLop').val(newId);
-                }
-            });
-        };
-
-        function GetById(MaLop) {
-            $.ajax({
-                url: '/Lop/GetById',
-                type: 'GET',
-                data: { MaLop: MaLop },
-                success: function (res) {
-                    $('#EditMaLop').val(res.data.MaLop);
-                    $('#EditTenLop').val(res.data.TenLop);
-                }
-            });
-        };
-        function AddHocSinh() {
-            var MaLop = $('#MaLop').val().trim();
-            var TenLop = $('#TenLop').val().trim();
-
-            $.ajax({
-                type: 'POST',
-                url: '/Lop/Add',
-                dataType: 'JSON',
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({
-                    MaLop: MaLop,
-                    TenLop: TenLop
-                }),
-                success: function (response) {
-                    alert(response.status);
-                    LoadData();
-                },
-                error: function (response) {
-                    alert(response.status)
-                },
-            });
-        };
-
-
-        function resetForm() {
-            $('#quadratic-form input[type="text"]').not('#MaLop').val('');
+        $('#exampleModal').on('show.bs.modal', function (e) {
             TangID();
+        });
+
+        $('#btnReset').click(function () {
+            resetForm();
+        });
+
+        $(document).on("click", ".btnEdit", function () {
+            var MaLop = $(this).closest("tr").find("td:eq(1)").text();
+            GetById(MaLop);
+        });
+
+        $("#btnSaveEdit").click(function () {
+            if (validateAllInputs(true)) {
+                UpdateHS();
+            }
+        });
+
+        $(document).on("click", ".btnDelete", function () {
+            var id = $(this).closest("tr").find("td:eq(1)").text();
+            var name = $(this).closest("tr").find("td:eq(2)").text();
+            if (confirm("Bạn có chắc muốn xóa lớp '" + name + "' không?")) {
+                DeleteHocSinh(id);
+            }
+        });
+    });
+
+    function LoadData() {
+        $.ajax({
+            url: '/Lop/GetLop',
+            type: 'GET',
+            success: function (res) {
+                var items = res.data;
+                var html = "";
+                if (items.length === 0) {
+                    html += "<tr><td colspan='9' class='text-center'>Không có dữ liệu</td></tr>";
+                } else {
+                    for (let i = 0; i < items.length; i++) {
+                        var index = i + 1;
+                        html += "<tr>";
+                        html += "<td>" + index + "</td>";
+                        html += "<td>" + items[i].MaLop + "</td>";
+                        html += "<td>" + items[i].TenLop + "</td>";
+                        html += "<td><button class='btn btn-icon btn-hover btn-sm btn-rounded pull-right btnEdit' data-toggle='modal' data-target='#EditModal'><i class='anticon anticon-edit'></i></button><button class='btn btn-icon btn-hover btn-sm btn-rounded pull-right btnDelete'><i class='anticon anticon-delete'></i></button></td>";
+                        html += "</tr>";
+                    }
+                }
+                $('#showdata').html(html);
+            }
+        });
+    };
+
+    function TangID() {
+        $.ajax({
+            url: '/Lop/GetMaxLop',
+            type: 'GET',
+            success: function (data) {
+                var maxId = data.maxId;
+                var newId = "L" + (maxId + 1);
+                $('#MaLop').val(newId);
+            }
+        });
+    };
+
+    function GetById(MaLop) {
+        $.ajax({
+            url: '/Lop/GetById',
+            type: 'GET',
+            data: { MaLop: MaLop },
+            success: function (res) {
+                $('#EditMaLop').val(res.data.MaLop);
+                $('#EditTenLop').val(res.data.TenLop);
+            }
+        });
+    };
+
+    function AddHocSinh() {
+        var MaLop = escapeInput($('#MaLop').val().trim());
+        var TenLop = escapeInput($('#TenLop').val().trim());
+
+        $.ajax({
+            type: 'POST',
+            url: '/Lop/Add',
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                MaLop: MaLop,
+                TenLop: TenLop
+            }),
+            success: function (response) {
+                alert(response.status);
+                LoadData();
+            },
+            error: function (response) {
+                alert(response.status);
+            },
+        });
+    };
+
+    function resetForm() {
+        $('#quadratic-form input[type="text"]').not('#MaLop').val('');
+        TangID();
+    };
+
+    function UpdateHS() {
+        var MaLop = escapeInput($('#EditMaLop').val().trim());
+        var TenLop = escapeInput($('#EditTenLop').val().trim());
+
+        var l = {
+            MaLop: MaLop,
+            TenLop: TenLop,
         };
 
+        $.ajax({
+            type: 'POST',
+            url: '/Lop/Edit',
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(l),
+            success: function (response) {
+                alert(response.status);
+                LoadData();
+            },
+        });
+    };
 
-        function UpdateHS() {
-            var TenLop = $('#EditTenLop').val();
-           
-            var l = {
-                MaLop: $('#EditMaLop').val(),
-                TenLop: TenLop,
-            };
+    function DeleteHocSinh(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/Lop/Delete',
+            data: { id: id },
+            success: function (response) {
+                alert(response.status);
+                LoadData();
+            },
+        });
+    };
 
-            $.ajax({
-                type: 'POST',
-                url: '/Lop/Edit',
-                dataType: 'JSON',
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(l),
-                success: function (response) {
-                    alert(response.status);
-                    LoadData();
-                },
-            });
-        };
+    function escapeInput(input) {
+        return input
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#x27;")
+            .replace(/\//g, "&#x2F;");
+    }
 
-        function DeleteHocSinh(id) {
-            $.ajax({
-                type: 'POST',
-                url: '/Lop/Delete',
-                data: { id: id },
-                success: function (response) {
-                    alert(response.status);
-                    LoadData();
-                },
-            });
-        };
-    </script>
+    function validateAllInputs(isEdit = false) {
+        var inputs = isEdit ? $('#EditModal input[type="text"]') : $('#exampleModal input[type="text"]');
+        var isValid = true;
+
+        inputs.each(function () {
+            var value = $(this).val().trim();
+            if (/script/i.test(value)) {
+                alert("Không được nhập vào dạng script");
+                isValid = false;
+                return false;
+            }
+        });
+
+        return isValid;
+    }
+</script>
+

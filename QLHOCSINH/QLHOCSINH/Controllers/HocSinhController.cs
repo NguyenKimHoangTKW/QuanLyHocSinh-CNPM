@@ -61,6 +61,10 @@ namespace QLHOCSINH.Controllers
                 {
                     status = "Ho ten chua co";
                 }
+                else if (hs.DiaChi == null)
+                {
+                    status = "dia chi chua co";
+                }
                 else
                 {
                     status = "Thêm học sinh thành công";
