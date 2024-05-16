@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|d:\\congnghephanmem\\congnghephanmem\\lab2\\qlhocsinh\\qlhocsinh\\views\\shared\\_navlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|solutionrelative:qlhocsinh\\views\\shared\\_navlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|d:\\congnghephanmem\\congnghephanmem\\lab2\\qlhocsinh\\qlhocsinh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|solutionrelative:qlhocsinh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|d:\\congnghephanmem\\congnghephanmem\\lab2\\qlhocsinh\\qlhocsinh\\views\\lop\\viewlop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|solutionrelative:qlhocsinh\\views\\lop\\viewlop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|d:\\congnghephanmem\\congnghephanmem\\lab2\\qlhocsinh\\qlhocsinh\\views\\hocsinh\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B6088313-2475-4AC8-9A3C-576991ED384E}|QLHOCSINH\\QLHOCSINH.csproj|solutionrelative:qlhocsinh\\views\\hocsinh\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_NavLayout.cshtml",
+              "DocumentMoniker": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\Shared\\_NavLayout.cshtml",
+              "RelativeDocumentMoniker": "QLHOCSINH\\Views\\Shared\\_NavLayout.cshtml",
+              "ToolTip": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\Shared\\_NavLayout.cshtml",
+              "RelativeToolTip": "QLHOCSINH\\Views\\Shared\\_NavLayout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-16T06:14:26.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "QLHOCSINH\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "QLHOCSINH\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-16T06:12:56.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ViewLop.cshtml",
+              "DocumentMoniker": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\Lop\\ViewLop.cshtml",
+              "RelativeDocumentMoniker": "QLHOCSINH\\Views\\Lop\\ViewLop.cshtml",
+              "ToolTip": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\Lop\\ViewLop.cshtml",
+              "RelativeToolTip": "QLHOCSINH\\Views\\Lop\\ViewLop.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-16T06:11:52.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\HocSinh\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLHOCSINH\\Views\\HocSinh\\Index.cshtml",
+              "ToolTip": "D:\\CongNghePhanMem\\CongNghePhanMem\\Lab2\\QLHOCSINH\\QLHOCSINH\\Views\\HocSinh\\Index.cshtml",
+              "RelativeToolTip": "QLHOCSINH\\Views\\HocSinh\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-16T06:11:43.603Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
