@@ -25,8 +25,10 @@ namespace QLHOCSINH.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ACOUNT> ACOUNTS { get; set; }
         public virtual DbSet<HOCSINH> HOCSINHs { get; set; }
         public virtual DbSet<LOP> LOPs { get; set; }
+        public virtual DbSet<ROLE> ROLEs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

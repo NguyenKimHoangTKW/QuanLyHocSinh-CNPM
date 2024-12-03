@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/Style/assestsregister/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/Style/assestsregister/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2>Sign up </h2>
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="name" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" id="password" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" id="re-password" placeholder="Confirm Password" />
+                    </div>
+
+                    <div class="form-group">
+                        <input id="submit" class="form-submit submit" value="Sign up" />
+                        <a href="/Account/Login" class="submit-link submit">Back to Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+    <script src="~/Style/assestsregister/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+
+        function alersweet(type,message) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: type,
+                title: message
+            });
+        }
+        $(document).on("click", "#submit", function () {
+            var username = $('#name').val().trim();
+            var password = $('#password').val().trim();
+            var re_password = $('#re-password').val().trim();
+
+            if (username === "") {
+                alersweet("error", "Không được bỏ trống username");
+                return;
+            }
+            if (password === "") {
+                alersweet("error", "Không được bỏ trống password");
+                return;
+            }
+            if (re_password === "") {
+                alersweet("error", "Vui lòng nhập lại mật khẩu");
+                return;
+            }
+            if (password !== re_password) {
+                alersweet("error", "Mật khẩu nhập lại không chính xác");
+                return;
+            }
+
+            Login(username, password);
+        });
+
+        async function Login(username, password) {
+            const res = await $.ajax({
+                url: '/Account/register_post',
+                type: 'POST',
+                data: {
+                    username: username,
+                    password: password
+                }
+            });
+            if (res.success) {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Đăng ký tài khoản thành công",
+                    icon: "success"
+                }).then((result) => {
+                    if (result.isConfirmed || result.isDismissed) {
+                        window.location.href = res.url; 
+                    }
+                });
+
+            }
+            else {
+                alersweet("error", res.Message);
+            }
+
+        }
+    </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
