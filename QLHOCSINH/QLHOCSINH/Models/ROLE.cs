@@ -17,13 +17,13 @@ namespace QLHOCSINH.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ROLE()
         {
-            this.ACOUNTS = new HashSet<ACOUNT>();
+            this.ACCOUNTs = new HashSet<ACCOUNT>();
         }
     
         public int id_role { get; set; }
         public string ten_role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACOUNT> ACOUNTS { get; set; }
+        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QLHOCSINHModelStoreContainer" CdmEntityContainer="QLHOCSINHEntities">
-    <EntitySetMapping Name="ACOUNTS">
-      <EntityTypeMapping TypeName="QLHOCSINHModel.ACOUNT">
-        <MappingFragment StoreEntitySet="ACOUNTS">
+    <EntitySetMapping Name="ACCOUNTs">
+      <EntityTypeMapping TypeName="QLHOCSINHModel.ACCOUNT">
+        <MappingFragment StoreEntitySet="ACCOUNT">
           <ScalarProperty Name="LocketEndTime" ColumnName="LocketEndTime" />
           <ScalarProperty Name="is_locked" ColumnName="is_locked" />
           <ScalarProperty Name="id_role" ColumnName="id_role" />

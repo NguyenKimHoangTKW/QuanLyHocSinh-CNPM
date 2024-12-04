@@ -5,17 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="QLHOCSINHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ACOUNTS">
+        <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="id_ac" />
           </Key>
           <Property Name="id_ac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="50" />
-          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar(max)" />
           <Property Name="count_failed_password" Type="int" />
           <Property Name="id_role" Type="int" />
           <Property Name="is_locked" Type="bit" />
-          <Property Name="LocketEndTime" Type="date" />
+          <Property Name="LocketEndTime" Type="datetime" />
         </EntityType>
         <EntityType Name="HOCSINH">
           <Key>
@@ -41,7 +41,7 @@
             <PropertyRef Name="id_role" />
           </Key>
           <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ten_role" Type="nvarchar" MaxLength="50" />
+          <Property Name="ten_role" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -53,14 +53,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_ACOUNTS_ROLE">
+        <Association Name="FK_ACCOUNT_ROLE">
           <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
-          <End Role="ACOUNTS" Type="Self.ACOUNTS" Multiplicity="*" />
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ROLE">
               <PropertyRef Name="id_role" />
             </Principal>
-            <Dependent Role="ACOUNTS">
+            <Dependent Role="ACCOUNT">
               <PropertyRef Name="id_role" />
             </Dependent>
           </ReferentialConstraint>
@@ -78,14 +78,14 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="QLHOCSINHModelStoreContainer">
-          <EntitySet Name="ACOUNTS" EntityType="Self.ACOUNTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOCSINH" EntityType="Self.HOCSINH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ACOUNTS_ROLE" Association="Self.FK_ACOUNTS_ROLE">
+          <AssociationSet Name="FK_ACCOUNT_ROLE" Association="Self.FK_ACCOUNT_ROLE">
             <End Role="ROLE" EntitySet="ROLE" />
-            <End Role="ACOUNTS" EntitySet="ACOUNTS" />
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
           <AssociationSet Name="FK_HOCSINH_LOP" Association="Self.FK_HOCSINH_LOP">
             <End Role="LOP" EntitySet="LOP" />
@@ -97,32 +97,32 @@
     <edmx:ConceptualModels>
       <Schema Namespace="QLHOCSINHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="QLHOCSINHEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ACOUNTS" EntityType="QLHOCSINHModel.ACOUNT" />
+          <EntitySet Name="ACCOUNTs" EntityType="QLHOCSINHModel.ACCOUNT" />
           <EntitySet Name="HOCSINHs" EntityType="QLHOCSINHModel.HOCSINH" />
           <EntitySet Name="LOPs" EntityType="QLHOCSINHModel.LOP" />
           <EntitySet Name="ROLEs" EntityType="QLHOCSINHModel.ROLE" />
           <EntitySet Name="sysdiagrams" EntityType="QLHOCSINHModel.sysdiagram" />
-          <AssociationSet Name="FK_ACOUNTS_ROLE" Association="QLHOCSINHModel.FK_ACOUNTS_ROLE">
+          <AssociationSet Name="FK_ACCOUNT_ROLE" Association="QLHOCSINHModel.FK_ACCOUNT_ROLE">
             <End Role="ROLE" EntitySet="ROLEs" />
-            <End Role="ACOUNT" EntitySet="ACOUNTS" />
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
           </AssociationSet>
           <AssociationSet Name="FK_HOCSINH_LOP" Association="QLHOCSINHModel.FK_HOCSINH_LOP">
             <End Role="LOP" EntitySet="LOPs" />
             <End Role="HOCSINH" EntitySet="HOCSINHs" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="ACOUNT">
+        <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="id_ac" />
           </Key>
           <Property Name="id_ac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="count_failed_password" Type="Int32" />
           <Property Name="id_role" Type="Int32" />
           <Property Name="is_locked" Type="Boolean" />
-          <Property Name="LocketEndTime" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ROLE" Relationship="QLHOCSINHModel.FK_ACOUNTS_ROLE" FromRole="ACOUNT" ToRole="ROLE" />
+          <Property Name="LocketEndTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ROLE" Relationship="QLHOCSINHModel.FK_ACCOUNT_ROLE" FromRole="ACCOUNT" ToRole="ROLE" />
         </EntityType>
         <EntityType Name="HOCSINH">
           <Key>
@@ -150,8 +150,8 @@
             <PropertyRef Name="id_role" />
           </Key>
           <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ten_role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ACOUNTS" Relationship="QLHOCSINHModel.FK_ACOUNTS_ROLE" FromRole="ROLE" ToRole="ACOUNT" />
+          <Property Name="ten_role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNTs" Relationship="QLHOCSINHModel.FK_ACCOUNT_ROLE" FromRole="ROLE" ToRole="ACCOUNT" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -163,14 +163,14 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_ACOUNTS_ROLE">
+        <Association Name="FK_ACCOUNT_ROLE">
           <End Type="QLHOCSINHModel.ROLE" Role="ROLE" Multiplicity="0..1" />
-          <End Type="QLHOCSINHModel.ACOUNT" Role="ACOUNT" Multiplicity="*" />
+          <End Type="QLHOCSINHModel.ACCOUNT" Role="ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ROLE">
               <PropertyRef Name="id_role" />
             </Principal>
-            <Dependent Role="ACOUNT">
+            <Dependent Role="ACCOUNT">
               <PropertyRef Name="id_role" />
             </Dependent>
           </ReferentialConstraint>
@@ -193,9 +193,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QLHOCSINHModelStoreContainer" CdmEntityContainer="QLHOCSINHEntities">
-          <EntitySetMapping Name="ACOUNTS">
-            <EntityTypeMapping TypeName="QLHOCSINHModel.ACOUNT">
-              <MappingFragment StoreEntitySet="ACOUNTS">
+          <EntitySetMapping Name="ACCOUNTs">
+            <EntityTypeMapping TypeName="QLHOCSINHModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
                 <ScalarProperty Name="LocketEndTime" ColumnName="LocketEndTime" />
                 <ScalarProperty Name="is_locked" ColumnName="is_locked" />
                 <ScalarProperty Name="id_role" ColumnName="id_role" />

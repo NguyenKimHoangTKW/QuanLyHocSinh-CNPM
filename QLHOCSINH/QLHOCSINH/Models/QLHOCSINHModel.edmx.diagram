@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6bec2d912582458d933e4cb29f65b4ff" Name="Diagram1">
-        <EntityTypeShape EntityType="QLHOCSINHModel.ACOUNT" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="QLHOCSINHModel.ACCOUNT" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="QLHOCSINHModel.HOCSINH" Width="1.5" PointX="3" PointY="5" />
         <EntityTypeShape EntityType="QLHOCSINHModel.LOP" Width="1.5" PointX="0.75" PointY="5.375" />
         <EntityTypeShape EntityType="QLHOCSINHModel.ROLE" Width="1.5" PointX="0.75" PointY="1.375" />
         <EntityTypeShape EntityType="QLHOCSINHModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" />
-        <AssociationConnector Association="QLHOCSINHModel.FK_ACOUNTS_ROLE" />
+        <AssociationConnector Association="QLHOCSINHModel.FK_ACCOUNT_ROLE" />
         <AssociationConnector Association="QLHOCSINHModel.FK_HOCSINH_LOP" />
       </Diagram>
     </edmx:Diagrams>

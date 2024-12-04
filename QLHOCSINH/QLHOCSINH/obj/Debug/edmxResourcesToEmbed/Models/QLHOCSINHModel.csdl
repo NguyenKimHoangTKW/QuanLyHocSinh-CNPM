@@ -1,32 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLHOCSINHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="QLHOCSINHEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="ACOUNTS" EntityType="QLHOCSINHModel.ACOUNT" />
+    <EntitySet Name="ACCOUNTs" EntityType="QLHOCSINHModel.ACCOUNT" />
     <EntitySet Name="HOCSINHs" EntityType="QLHOCSINHModel.HOCSINH" />
     <EntitySet Name="LOPs" EntityType="QLHOCSINHModel.LOP" />
     <EntitySet Name="ROLEs" EntityType="QLHOCSINHModel.ROLE" />
     <EntitySet Name="sysdiagrams" EntityType="QLHOCSINHModel.sysdiagram" />
-    <AssociationSet Name="FK_ACOUNTS_ROLE" Association="QLHOCSINHModel.FK_ACOUNTS_ROLE">
+    <AssociationSet Name="FK_ACCOUNT_ROLE" Association="QLHOCSINHModel.FK_ACCOUNT_ROLE">
       <End Role="ROLE" EntitySet="ROLEs" />
-      <End Role="ACOUNT" EntitySet="ACOUNTS" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
     </AssociationSet>
     <AssociationSet Name="FK_HOCSINH_LOP" Association="QLHOCSINHModel.FK_HOCSINH_LOP">
       <End Role="LOP" EntitySet="LOPs" />
       <End Role="HOCSINH" EntitySet="HOCSINHs" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="ACOUNT">
+  <EntityType Name="ACCOUNT">
     <Key>
       <PropertyRef Name="id_ac" />
     </Key>
     <Property Name="id_ac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="count_failed_password" Type="Int32" />
     <Property Name="id_role" Type="Int32" />
     <Property Name="is_locked" Type="Boolean" />
-    <Property Name="LocketEndTime" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="ROLE" Relationship="QLHOCSINHModel.FK_ACOUNTS_ROLE" FromRole="ACOUNT" ToRole="ROLE" />
+    <Property Name="LocketEndTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ROLE" Relationship="QLHOCSINHModel.FK_ACCOUNT_ROLE" FromRole="ACCOUNT" ToRole="ROLE" />
   </EntityType>
   <EntityType Name="HOCSINH">
     <Key>
@@ -54,8 +54,8 @@
       <PropertyRef Name="id_role" />
     </Key>
     <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ten_role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="ACOUNTS" Relationship="QLHOCSINHModel.FK_ACOUNTS_ROLE" FromRole="ROLE" ToRole="ACOUNT" />
+    <Property Name="ten_role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ACCOUNTs" Relationship="QLHOCSINHModel.FK_ACCOUNT_ROLE" FromRole="ROLE" ToRole="ACCOUNT" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -67,14 +67,14 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <Association Name="FK_ACOUNTS_ROLE">
+  <Association Name="FK_ACCOUNT_ROLE">
     <End Type="QLHOCSINHModel.ROLE" Role="ROLE" Multiplicity="0..1" />
-    <End Type="QLHOCSINHModel.ACOUNT" Role="ACOUNT" Multiplicity="*" />
+    <End Type="QLHOCSINHModel.ACCOUNT" Role="ACCOUNT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ROLE">
         <PropertyRef Name="id_role" />
       </Principal>
-      <Dependent Role="ACOUNT">
+      <Dependent Role="ACCOUNT">
         <PropertyRef Name="id_role" />
       </Dependent>
     </ReferentialConstraint>

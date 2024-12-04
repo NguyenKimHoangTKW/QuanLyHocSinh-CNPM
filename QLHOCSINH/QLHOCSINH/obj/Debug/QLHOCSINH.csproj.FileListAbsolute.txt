@@ -247,3 +247,13 @@ D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\obj\Debug\QLHOCSINH.csproj.
 D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\obj\Debug\QLHOCSINH.csproj.Up2Date
 D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\obj\Debug\QLHOCSINH.dll
 D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\obj\Debug\QLHOCSINH.pdb
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\BCrypt.Net-Next.dll
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Buffers.dll
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Memory.dll
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Numerics.Vectors.dll
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\BCrypt.Net-Next.xml
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Buffers.xml
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Memory.xml
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Numerics.Vectors.xml
+D:\AnNinhMang\QuanLyHocSinh-CNPM\QLHOCSINH\QLHOCSINH\bin\System.Runtime.CompilerServices.Unsafe.xml

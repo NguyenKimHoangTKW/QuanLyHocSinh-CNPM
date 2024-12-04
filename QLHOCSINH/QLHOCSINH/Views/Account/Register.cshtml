@@ -97,7 +97,7 @@
 
         async function Login(username, password) {
             const res = await $.ajax({
-                url: '/Account/register_post',
+                url: '/api/register',
                 type: 'POST',
                 data: {
                     username: username,
